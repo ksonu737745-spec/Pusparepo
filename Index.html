@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Janbaaz Dynamic Website</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+overflow-x:hidden;
+}
+
+header{
+height:100vh;
+display:flex;
+justify-content:center;
+align-items:center;
+flex-direction:column;
+background:linear-gradient(135deg,#2563eb,#7c3aed);
+text-align:center;
+padding:20px;
+}
+
+header h1{
+font-size:65px;
+margin-bottom:20px;
+animation:slide 1.5s ease;
+}
+
+header p{
+font-size:22px;
+max-width:700px;
+line-height:1.6;
+margin-bottom:30px;
+}
+
+header button{
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:50px;
+cursor:pointer;
+background:white;
+color:#2563eb;
+font-weight:bold;
+transition:0.3s;
+}
+
+header button:hover{
+transform:scale(1.1);
+}
+
+section{
+padding:80px 20px;
+}
+
+.container{
+max-width:1200px;
+margin:auto;
+}
+
+.cards{
+display:grid;
+grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+gap:25px;
+}
+
+.card{
+background:#1e293b;
+padding:30px;
+border-radius:20px;
+transition:0.4s;
+box-shadow:0 0 20px rgba(0,0,0,0.3);
+}
+
+.card:hover{
+transform:translateY(-10px);
+background:#334155;
+}
+
+.card h2{
+margin-bottom:15px;
+color:#38bdf8;
+}
+
+.card p{
+color:#cbd5e1;
+line-height:1.6;
+}
+
+.counter-box{
+text-align:center;
+margin-top:60px;
+}
+
+.counter{
+font-size:80px;
+color:#38bdf8;
+margin-top:20px;
+}
+
+.todo{
+margin-top:80px;
+}
+
+.todo input{
+width:70%;
+padding:15px;
+border:none;
+border-radius:10px;
+font-size:18px;
+outline:none;
+}
+
+.todo button{
+padding:15px 25px;
+border:none;
+background:#38bdf8;
+color:white;
+font-size:18px;
+border-radius:10px;
+cursor:pointer;
+margin-left:10px;
+}
+
+ul{
+margin-top:30px;
+list-style:none;
+}
+
+ul li{
+background:#1e293b;
+padding:15px;
+margin-bottom:15px;
+border-radius:10px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.delete{
+background:red;
+border:none;
+padding:8px 15px;
+color:white;
+border-radius:8px;
+cursor:pointer;
+}
+
+footer{
+background:#020617;
+padding:25px;
+text-align:center;
+margin-top:80px;
+color:#94a3b8;
+}
+
+@keyframes slide{
+from{
+opacity:0;
+transform:translateY(40px);
+}
+to{
+opacity:1;
+transform:translateY(0);
+}
+}
+</style>
+</head>
+
+<body>
+
+<header>
+<h1>JANBAAZ WEBSITE 🔥</h1>
+<p>Beautiful Dynamic Website Without Database Connection</p>
+<button onclick="welcome()">Click Me</button>
+</header>
+
+<section>
+<div class="container">
+
+<div class="cards">
+
+<div class="card">
+<h2>Dynamic Counter</h2>
+<p>JavaScript se live counter chal raha hai.</p>
+</div>
+
+<div class="card">
+<h2>Todo System</h2>
+<p>Task add aur delete kar sakte ho bina database.</p>
+</div>
+
+<div class="card">
+<h2>Modern Animation</h2>
+<p>Smooth hover aur animated UI design.</p>
+</div>
+
+</div>
+
+<div class="counter-box">
+<h1>Live Visitors</h1>
+<div class="counter" id="counter">0</div>
+</div>
+
+<div class="todo">
+<h1>Todo List</h1>
+
+<input type="text" id="task" placeholder="Enter Task">
+<button onclick="addTask()">Add</button>
+
+<ul id="list"></ul>
+
+</div>
+
+</div>
+</section>
+
+<footer>
+© 2026 Janbaaz Dynamic Website
+</footer>
+
+<script>
+
+function welcome(){
+alert("Welcome To Janbaaz Dynamic Website 🚀");
+}
+
+let count=0;
+
+setInterval(()=>{
+count++;
+document.getElementById("counter").innerText=count;
+},1000);
+
+function addTask(){
+
+const task=document.getElementById("task");
+
+if(task.value===""){
+alert("Please enter task");
+return;
+}
+
+const li=document.createElement("li");
+
+li.innerHTML=`
+${task.value}
+<button class="delete" onclick="removeTask(this)">Delete</button>
+`;
+
+document.getElementById("list").appendChild(li);
+
+task.value="";
+}
+
+function removeTask(btn){
+btn.parentElement.remove();
+}
+
+</script>
+
+</body>
+</html>
